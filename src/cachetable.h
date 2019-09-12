@@ -10,18 +10,18 @@ struct cachetable
 typedef cachetable Cachetable;
 
 /* memory management */
-Cachetable new_Cachetable(void);
-void del_Cachetable(Cachetable*);               /* cachetable instance */
+Cachetable Cachetable_new(void);
+void Cachetable_del(Cachetable*);                       /* cachetable instance */
 
 /* disk I/O */
-int Cachetable_load(Cachetable*, const char*);  /* cachetable instance, filename to load from */
-int Cachetable_store(Cachetable*, const char*); /* cachetable instance, filename to store to */
+int Cachetable_load(Cachetable*, const char*);          /* cachetable instance, filename to load from */
+int Cachetable_store(Cachetable*, const char*);         /* cachetable instance, filename to store to */
 
 /* cachetable operations */
-int Cachetable_insert(const char*, void*);      /* key, object */
-void* Cachetable_get(const char*);              /* key */
-int Cachetable_remove(const char*);             /* key */
-int Cachetable_clear(void);
+int Cachetable_insert(Cachetable*, const char*, void*); /* cachetable instance, key, object */
+void* Cachetable_get(Cachetable*, const char*);         /* cachetable instance, key */
+int Cachetable_remove(Cachetable*, const char*);        /* cachetable instance, key */
+int Cachetable_clear(Cachetable*);                      /* cachetable instance */
 
 #endif
 
