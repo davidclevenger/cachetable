@@ -1,16 +1,16 @@
 #ifndef __CACHETABLE_H
 #define __CACHETABLE_H
 
-struct cachetable
+#define INITIAL_SIZE 23
+
+typedef struct cachetable
 {
     size_t size;
     void** table;
-};
-
-typedef cachetable Cachetable;
+} Cachetable;
 
 /* memory management */
-Cachetable Cachetable_new(void);
+Cachetable* Cachetable_new(void);
 void Cachetable_del(Cachetable*);                       /* cachetable instance */
 
 /* disk I/O */
