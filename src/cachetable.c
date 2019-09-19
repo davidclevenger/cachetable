@@ -31,15 +31,34 @@ _priv_hash(const char* key, size_t table_size)
 size_t
 _priv_next_prime(size_t curr)
 {
-    return 0;
+    size_t new_size = curr + 1;
+    while( !_priv_is_prime(new_size) ) ++new_size;
+    return new_size;
 }
 
+/* Credit: SO user dawg -> Thanks dawg! */
 int
 _priv_is_prime(size_t possible)
 {
-    return 0;
-}
+    size_t f, r;
 
+    if( possible == 2 || possible == 3 ) return 1;
+    if( possible < 2 || possible % 2 == 0 ) return 0;
+    if( n < 9 ) return 1;
+    if( n % 3 == 0 ) return 0;
+
+    r = sqrt(possible);
+    f = 5;
+
+    while( f <= r )
+    {
+        if( possible % f == 0 ) return 0;
+        if( possible % (f + 2) == 0 ) return 0;
+        f += 6;
+    }
+
+    return 1;
+}
 
 /* public definitions */
 
